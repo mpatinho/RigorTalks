@@ -16,7 +16,7 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase
      */
     public function testToCreateANonValidTemperature()
     {
-        new Temperature(-1);
+        Temperature::taken(-1);
     }
 
     /**
@@ -40,7 +40,7 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase
         $measure = 10;
         $this->assertSame(
             $measure,
-            (new Temperature($measure))->measure()
+            (Temperature::taken($measure))->measure()
         );
     }
 }
