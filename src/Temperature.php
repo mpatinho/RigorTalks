@@ -9,7 +9,7 @@ class Temperature{
         $this->setMeasure($measure);
     }
 
-    private function setMeasure(int $measure): void
+    private function setMeasure(int $measure)
     {
         $this->checkMeasureIsPositive($measure);
 
@@ -26,7 +26,12 @@ class Temperature{
             throw new TemperatureNegativeException("Measure should be positive");
         }
     }
-    
+
+    public static function taken($measure):Temperature {
+
+        return new Temperature($measure);
+    }
+
     public function measure(): int
     {
         return $this->measure;

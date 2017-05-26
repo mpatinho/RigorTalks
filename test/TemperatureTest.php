@@ -10,7 +10,6 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
-     * Undocumented function
      * @test
      * @expectedException \RigorTalks\TemperatureNegativeException 
      * @return void
@@ -21,7 +20,18 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Undocumented function
+     * @test
+     */
+    public function testToCreateAValidTemperatureWithNamedConstructor()
+    {
+        $measure = 10;
+        $this->assertSame(
+            $measure,
+            (Temperature::taken($measure))->measure()
+        );
+    }
+
+    /**
      * @test
      * @return void
      */
