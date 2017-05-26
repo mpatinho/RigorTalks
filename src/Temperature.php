@@ -6,14 +6,14 @@ class Temperature{
 
     public function __construct(int $measure)
     {
+        $this->setMeasure($measure);
+    }
+
+    private function setMeasure(int $measure): void
+    {
         $this->checkMeasureIsPositive($measure);
 
         $this->measure = $measure;
-    }
-
-    public function measure(): int
-    {
-        return $this->measure;
     }
 
     /**
@@ -26,6 +26,13 @@ class Temperature{
             throw new TemperatureNegativeException("Measure should be positive");
         }
     }
+    
+    public function measure(): int
+    {
+        return $this->measure;
+    }
+
+
 }
 
 ?>
