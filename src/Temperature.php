@@ -27,9 +27,9 @@ class Temperature{
         }
     }
 
-    public static function taken($measure):Temperature {
+    public static function taken($measure):self {
 
-        return new Temperature($measure);
+        return new static($measure);
     }
 
     public function measure(): int
