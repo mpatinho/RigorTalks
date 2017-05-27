@@ -1,6 +1,8 @@
 <?php
 namespace RigorTalks;
 
+use Doctrine\DBAL\DriverManager;
+
 class Temperature{
     private $measure;
 
@@ -37,7 +39,28 @@ class Temperature{
         return $this->measure;
     }
 
+    public function isSuperHot(): bool
+    {
+        $threshold = $this->getThreshold();
 
+
+        return $this->measure() > $threshold;
+    }
+
+    protected function getThreshold(): int
+    {
+        // It could also be
+        // global $conn
+        $conn = \Doctrine\DBAL\DriverManager::getConnection(array(
+            'dbname' => 'mydb',
+            'user' => 'user',
+            'password' => 'secret',
+            'host' => 'localhost',
+            'dirver' => 'pdo_mysql',
+        ), new \Doctrine\DBAL\Configuration());
+
+        return $conn->fetchColumn("SELECT hot_threshold FROM configuration");
+    }
 }
 
 ?>
