@@ -11,6 +11,6 @@ namespace RigorTalks;
 
 interface ColdThresholdSource
 {
-    public function getThreshold();
+    public function getThreshold():int;
 
 }
