@@ -61,6 +61,13 @@ class Temperature{
 
         return $conn->fetchColumn("SELECT hot_threshold FROM configuration");
     }
+
+    public function isSuperCold(ColdThresholdSource $coldThresholdSource)
+    {
+        $threshold = $coldThresholdSource->getThreshold();
+
+        return $this->measure() < $threshold;
+    }
 }
 
 ?>
