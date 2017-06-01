@@ -68,6 +68,13 @@ class Temperature{
 
         return $this->measure() < $threshold;
     }
+
+    public static function fromStation($station): self
+    {
+        return new static(
+            $station->sensor()->temperature()->measure()
+        );
+    }
 }
 
 ?>
