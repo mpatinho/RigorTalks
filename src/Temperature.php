@@ -3,7 +3,8 @@ namespace RigorTalks;
 
 use Doctrine\DBAL\DriverManager;
 
-class Temperature{
+class Temperature
+{
     private $measure;
 
     private function __construct(int $measure)
@@ -29,7 +30,8 @@ class Temperature{
         }
     }
 
-    public static function taken($measure):self {
+    public static function taken($measure): self
+    {
 
         return new static($measure);
     }
@@ -73,6 +75,13 @@ class Temperature{
     {
         return new static(
             $station->sensor()->temperature()->measure()
+        );
+    }
+
+    public function add(self $anotherTemperature) : self
+    {
+        return new self(
+            $this->measure() + $anotherTemperature->measure()
         );
     }
 }

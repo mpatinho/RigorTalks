@@ -129,5 +129,19 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase implements ColdThresho
     {
         return 50;
     }
+
+    /**
+     * @test
+     */
+    public function tryToSumTwoMeasures()
+    {
+        $a = Temperature::taken(50);
+        $b = Temperature::taken(50);
+
+        $c = $a->add($b);
+        $this->assertSame(100, $c->measure() );
+        $this->assertNotSame($c, $a);
+        $this->assertNotSame($c, $b);
+    }
 }
 ?>
