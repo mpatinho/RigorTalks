@@ -1,0 +1,64 @@
+Humbug running test suite to generate logs and code coverage data...
+Humbug has completed the initial test run successfully.
+Tests: 8 Line Coverage: 76.00%
+Humbug is analysing source files...
+Mutation Testing is commencing on 4 files...
+(.: killed, M: escaped, S: uncovered, E: fatal error, T: timed out)
+......M.S.....M
+15 mutations were generated:
+      12 mutants were killed
+       1 mutants were not covered by tests
+       2 covered mutants were not detected
+       0 fatal errors were encountered
+       0 time outs were encountered
+
+Metrics:
+    Mutation Score Indicator (MSI): 80%
+    Mutation Code Coverage: 93%
+    Covered Code MSI: 86%
+
+Remember that some mutants will inevitably be harmless (i.e. false positives).
+Time: 3.63 minutes Memory: 6.00MB
+Humbug results are being logged as TEXT to: humbuglog.txt
+
+------
+Uncovered
+------
+
+
+1) Mutator \Humbug\Mutator\ReturnValue\NewObject on \RigorTalks\Temperature::fromStation() in /Library/WebServer/Documents/Sites/RigorTalks/src/Temperature.php on line 76
+
+
+------
+Escapes
+------
+
+
+1) \Humbug\Mutator\ConditionalBoundary\LessThan
+Diff on \RigorTalks\Temperature::isSuperCold() in /Library/WebServer/Documents/Sites/RigorTalks/src/Temperature.php:
+--- Original
++++ New
+@@ @@
+ 
+-        return $this->measure() < $threshold;
++        return $this->measure() <= $threshold;
+     }
+ 
+     public static function fromStation($station): self
+     {
+         return new static(
+             $station->sensor()->temperature()->measure()
+
+
+2) \Humbug\Mutator\Number\IntegerValue
+Diff on \RigorTalks\TemperatureTestClass::getThreshold() in /Library/WebServer/Documents/Sites/RigorTalks/src/TemperatureTestClass.php:
+--- Original
++++ New
+@@ @@
+     {
+-        return 10;
++        return 11;
+     }
+ }
+
+

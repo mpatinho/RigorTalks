@@ -8,6 +8,6 @@ class TemperatureTestClass extends Temperature
 
     public function getThreshold(): int
     {
-        return 50;
+        return 10;
     }
 }

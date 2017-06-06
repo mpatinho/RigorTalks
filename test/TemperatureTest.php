@@ -39,7 +39,7 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase implements ColdThresho
      */
     public function testToCreateAValidTemperature()
     {
-        $measure = 10;
+        $measure = 0;
         $this->assertSame(
             $measure,
             (Temperature::taken($measure))->measure()
@@ -103,7 +103,8 @@ class TemperatureTest extends \PHPUnit\Framework\TestCase implements ColdThresho
 
     public function tryToCreateATemperatureFromStation()
     {
-
+        $a = Temperature::fromStation($this);
+        $this->assertNotSame($a, $this);
         $this->assertSame(
             50,
             Temperature::fromStation(
